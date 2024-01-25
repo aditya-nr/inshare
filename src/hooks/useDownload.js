@@ -1,7 +1,7 @@
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 
-const AWS_S3_KEY_ID = "AKIA3BFCVVDQYZJJ2J5Q"
-const AWS_S3_KEY = "Q/3E0HaEc2tlsSFVdDtDT7KACI9vwyf2zjxhXRuc"
+const AWS_S3_KEY_ID = process.env.NEXT_PUBLIC_KEY_ID;
+const AWS_S3_KEY = process.env.NEXT_PUBLIC_KEY;
 const AWS_S3_REGION = "ap-south-1"
 const AWS_S3_BUCKET = "aditya-nr.in"
 

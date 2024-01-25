@@ -7,6 +7,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
 import { AppContext, IntialState, Reducer } from "@/context/AppContext";
 
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+
 function changeFavicon(src: string) {
   let link: any =
     document.querySelector("link[rel='shortcut icon']") ||
@@ -31,7 +33,7 @@ export default function RootLayout({
     changeFavicon("/favicon.png");
 
     if (!socket) {
-      let new_socket = io("http://localhost:3001");
+      let new_socket = io(`${SERVER_URL}`);
       setSocket(new_socket);
     } else {
       socket.on("notification", (data: any) => {

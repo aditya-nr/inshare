@@ -76,8 +76,7 @@ const Text = ({ data, name }: renderMessageObject) => {
 
 const Message = (prop: renderMessageObject) => {
   const { data, name } = prop;
-  if (data.type == "TEXT") console.log(data.message);
-  else console.log(data.filename);
+
   return (
     <>
       {/* container */}
