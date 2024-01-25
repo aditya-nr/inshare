@@ -6,13 +6,13 @@ import { io } from "socket.io-client";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
 import { AppContext, IntialState, Reducer } from "@/context/AppContext";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "InShare.online",
-  description: "instant share of file and text",
-  icons: ["/favicon.png"],
-};
+// export const metadata: Metadata = {
+//   title: "InShare.online",
+//   description: "instant share of file and text",
+//   icons: ["/favicon.png"],
+// };
 
 export default function RootLayout({
   children,
