@@ -6,13 +6,16 @@ import { io } from "socket.io-client";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
 import { AppContext, IntialState, Reducer } from "@/context/AppContext";
-// import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "InShare.online",
-//   description: "instant share of file and text",
-//   icons: ["/favicon.png"],
-// };
+function changeFavicon(src: string) {
+  let link: any =
+    document.querySelector("link[rel='shortcut icon']") ||
+    document.createElement("link");
+  link.type = "image/x-icon";
+  link.rel = "shortcut icon";
+  link.href = src;
+  document.getElementsByTagName("head")[0].appendChild(link);
+}
 
 export default function RootLayout({
   children,
@@ -24,6 +27,9 @@ export default function RootLayout({
   const { toast } = useToast();
 
   useEffect(() => {
+    document.title = "InShare";
+    changeFavicon("/favicon.png");
+
     if (!socket) {
       let new_socket = io("http://localhost:3001");
       setSocket(new_socket);
