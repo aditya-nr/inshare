@@ -59,7 +59,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className="bg-slate-100">
         <AppContext.Provider value={{ state, dispatch, socket }}>
           {children}
           <Toaster />

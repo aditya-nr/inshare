@@ -25,7 +25,7 @@ const FruitName = [
   "Kaju",
   "Santra",
   "Mausambi",
-  "Gagar",
+  "Gajar",
   "Kela",
   "Anar",
 ];
@@ -103,20 +103,21 @@ export const CreateRoomForm = () => {
     <>
       {/* Name */}
       <div className="flex flex-col space-y-1.5">
-        <Label htmlFor="name">Name</Label>
+        <Label htmlFor="name" className="text-xl cursor-pointer">Name</Label>
         <Input
           id="name"
           placeholder={defaultName}
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="input"
         />
       </div>
 
       {/* Password */}
       <div className="flex flex-col space-y-1.5">
         <div className="flex items-center gap-2">
-          <Label htmlFor="password">Password</Label>
-          <Switch onCheckedChange={(e) => setShowPasswordField((p) => !p)} />
+          <Label htmlFor="password" className="text-xl cursor-pointer">Password</Label>
+          <Switch onCheckedChange={() => setShowPasswordField((p) => !p)} />
           <p className="text-sm text-gray-400">(Optional)</p>
         </div>
         {showPasswordField && (
@@ -126,7 +127,7 @@ export const CreateRoomForm = () => {
               placeholder="Enter Password"
               type="password"
               name="password"
-              className={!!errors.password ? "border-red-500" : ""}
+              className={`${!!errors.password ? "border-red-500" : ""} input`}
               value={password}
               onChange={(e) => {
                 errors.password && setErrors((p) => ({ ...p, password: "" }));
@@ -143,8 +144,8 @@ export const CreateRoomForm = () => {
       </div>
 
       {/* Time Out */}
-      <div className="flex flex-col space-y-1.5">
-        <Label htmlFor="duration">Room Duration</Label>
+      <div className="flex flex-col place-items-start space-y-1.5">
+        <Label htmlFor="duration" className="text-xl cursor-pointer">Room Duration</Label>
         <ToggleGroup
           type="single"
           value={timeOut}
@@ -158,7 +159,7 @@ export const CreateRoomForm = () => {
 
       {/* Max Candidate */}
       <div className="flex items-center gap-2 ">
-        <Label htmlFor="maxCandidate">Maximum Candidate</Label>
+        <Label htmlFor="maxCandidate" className="text-xl cursor-pointer">Maximum Candidate</Label>
         <Select
           value={maxCandidate}
           onValueChange={(val) => setMaxCandidate(val)}
@@ -180,7 +181,7 @@ export const CreateRoomForm = () => {
         </Select>
       </div>
 
-      <Button className="w-full" onClick={handleSubmit}>
+      <Button className="w-full bg-blue-400 hover:bg-blue-500 text-xl h-11" onClick={handleSubmit}>
         Create Room
       </Button>
     </>
