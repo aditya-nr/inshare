@@ -15,7 +15,7 @@ const FruitName = [
   "Kaju",
   "Santra",
   "Mausambi",
-  "Gagar",
+  "Gajar",
   "Kela",
   "Anar",
 ];
@@ -35,6 +35,8 @@ export const JoinRoomForm = () => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [password, setPassword] = useState("");
+
+  const [Join, setJoin] = useState(false);
 
   const validateData = (
     name: string,
@@ -107,27 +109,28 @@ export const JoinRoomForm = () => {
     <>
       {/* Name */}
       <div className="flex flex-col space-y-1.5">
-        <Label htmlFor="name">Name</Label>
+        <Label htmlFor="name" className="text-xl cursor-pointer">Name</Label>
         <Input
           id="name"
           placeholder={defaultName}
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="input"
         />
       </div>
 
       {/* Room */}
       <div className="flex flex-col space-y-1.5">
-        <Label htmlFor="name">Room ID</Label>
+        <Label htmlFor="room" className="text-xl cursor-pointer">Room ID</Label>
         <Input
-          id="name"
+          id="room"
           placeholder={"Enter Room ID"}
           value={room}
           onChange={(e) => {
             errors.room && setErrors((p) => ({ ...p, room: "" }));
             setRoom(e.target.value);
           }}
-          className={!!errors.room ? "border-red-500" : ""}
+          className={`${!!errors.room ? "border-red-500" : ""} input`}
           disabled={showPasswordField}
         />
         {!!errors.room && (
@@ -138,7 +141,7 @@ export const JoinRoomForm = () => {
       {/* Password */}
       {showPasswordField && (
         <div className="flex flex-col space-y-1.5">
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password" className="text-xl cursor-pointer">Password</Label>
           <Input
             id="password"
             placeholder="Enter Password"
@@ -159,7 +162,7 @@ export const JoinRoomForm = () => {
         </div>
       )}
 
-      <Button className="w-full" onClick={handleSubmit}>
+      <Button className="w-full bg-blue-400 hover:bg-blue-500 text-xl h-11" onClick={handleSubmit}>
         Join Room
       </Button>
     </>
